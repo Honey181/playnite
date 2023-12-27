@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Unturned</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('89ce7ec8-969d-4c5c-812c-c90c03909c48/03d290b7-7865-48b6-a63b-75debe712d28.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="89ce7ec8-969d-4c5c-812c-c90c03909c48/6bbd44c6-64df-45cc-a2e6-782b8977af99.ico"/> Unturned</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="89ce7ec8-969d-4c5c-812c-c90c03909c48/420dad88-3f05-4182-aa20-9e4741c5387a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>2h 25m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-24.08.2021">24.08.2021</a> 18:08:24</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-24.08.2021">24.08.2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-26.12.2023">26.12.2023</a> 23:12:40</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-Macintosh">Macintosh</a><br/><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-07.07.2017">07.07.2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-91">91</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Akcja">Akcja</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Free to Play">Free to Play</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Niezależne">Niezależne</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Przygodowe">Przygodowe</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Rekreacyjne">Rekreacyjne</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Smartly Dressed Games">Smartly Dressed Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Smartly Dressed Games">Smartly Dressed Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Achievements">Achievements</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Op">Co-Op</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-In-App Purchases">In-App Purchases</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Includes Level Editor">Includes Level Editor</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-LAN Co-Op">LAN Co-Op</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-LAN Pvp">LAN Pvp</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-NVIDIA Freestyle">NVIDIA Freestyle</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Online Co-Op">Online Co-Op</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Online Pvp">Online Pvp</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Pvp">Pvp</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Stats">Stats</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Valve Anti-Cheat Enabled">Valve Anti-Cheat Enabled</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://smartlydressedgames.com/" target="_blank">Official</a><br/><a href="https://twitter.com/SDGNelson" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/304930" target="_blank">Steam</a><br/><a href="https://unturned.fandom.com/wiki/Unturned" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Unturned" target="_blank">Wikipedia</a><br/><a href="https://www.reddit.com/r/unturned" target="_blank">Reddit</a><br/><a href="https://www.twitch.tv/directory/game/Unturned" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Akcja">Akcja</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-FPS">FPS</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Free to Play">Free to Play</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Jednoosobowe">Jednoosobowe</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Klimatyczne">Klimatyczne</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Kooperacja">Kooperacja</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-MMO">MMO</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Niezależne">Niezależne</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Otwarty świat">Otwarty świat</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Perspektywa pierwszej osoby">Perspektywa pierwszej osoby</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Piaskownica">Piaskownica</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Postapokaliptyczne">Postapokaliptyczne</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Przygodowe">Przygodowe</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Rekreacyjne">Rekreacyjne</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strzelanka">Strzelanka</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strzelanka z łupami">Strzelanka z łupami</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Survival">Survival</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Wieloosobowe">Wieloosobowe</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Wytwarzanie">Wytwarzanie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Zombie">Zombie</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.akamai.steamstatic.com/steam/apps/304930/extras/Title.png?t=1688148667" /><br><br><strong>POZOSTAŃ NIEODMIENIONYM</strong><br>Jesteś jedną z osób, które jeszcze <i>nie</i> przemieniły się w zombie. Zachowanie tego stanu rzeczy będzie wyzwaniem.<br><br><ul class="bb_ul"><li>Wkrocz do akcji, strzelając do wszystkiego co się rusza, skupiając na sobie uwagę zarówno żywych, jak i martwych.<br></li><li>Podejdź do sprawy subtelnie, działając skrycie i odwracając uwagę innych.<br></li><li>Zmierz się z innymi i naucz się kontrować specjalne umiejętności, takie jak <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fm.in" target="_blank" rel=" noopener"  >m.in</a>. niewidzialność, zianie ogniem czy miotanie piorunami.</li></ul><br><strong>PRZETRWAJ W WALCE Z NATURĄ</strong><br>Jakby zombie nie były wystarczającym problemem!<br><br><ul class="bb_ul"><li>Zbieraj dziko rosnące owoce i warzywa.<br></li><li>Poluj na zwierzęta, by zdobyć ich mięso i skóry lub sam wciel się w zdobycz i ucieknij przed śmiercią.<br></li><li>Wędkuj ryby... albo i śmieci.<br></li><li>Siej ziarna i zbieraj plony.<br></li><li>Szukaj schronienia przed zamieciami i ogrzej się.</li></ul><br><strong>ZMIERZ SIĘ Z INNYMI GRACZAMI</strong><br>Przyjaciel czy wróg, w grze znajdziesz wiele interesujących osób.<br><br><ul class="bb_ul"><li>Oślepiaj oraz aresztuj bandytów, nie zabijając ich.<br></li><li>Walcz przy użyciu każdej możliwej broni - mieczy, karabinów maszynowych lub snajperskich, pocisków, min - czego dusza zapragnie.<br></li><li>Przebij się przez umocnienia wroga, używając zdalnie aktywowanych ładunków wybuchowych i okradnij ich ze sprzętu.<br></li><li>Dla czystego aspektu PvP wkrocz na arenę i walcz w trybie każdy na każdego lub wejdź w tryb PvE i współpracuj z innymi w pokoju.<br></li><li>Serwery roleplay pozwalają graczom na wczucie się w postać i wspólne uczestnictwo w historii.</li></ul><br><strong>POMÓŻ NOWEJ SPOŁECZNOŚCI</strong><br>Nawet jeśli grasz offline lub solo, nie będziesz narzekać na nudę.<br><br><ul class="bb_ul"><li>Poznawaj, rozmawiaj oraz handluj z NPC-ami.<br></li><li>Wykonuj zadania, by pomóc NPC-om i pchnąć fabułę do przodu.<br></li><li>Odpieraj ataki hord nieumarłych.<br></li><li>Zabezpieczaj pakunki dostarczane z powietrza.<br></li><li>Włóż jedną z wielu masek przeciwgazowych, by przemierzać strefy radioaktywne.</li></ul><br><strong>WZMOCNIJ SWOJĄ TWIERDZĘ</strong><br>Stwórz miejsce, w którym na spokojnie odpoczniesz lub którego użyjesz do prowadzenia swojego gangu.<br><br><ul class="bb_ul"><li>Używaj barykad, mebli, pułapek, maszyn i wielu innych rzeczy.<br></li><li>Zabij okna dechami, by przetrwać noc.<br></li><li>Buduj całkowicie nowe struktury, używając zebranych zasobów.<br></li><li>Modyfikując swój pojazd, zmień go w mobilną fortecę.</li></ul><br><strong>PODRÓŻUJ PRZEZ LĄD, MORZE LUB POWIETRZE</strong><br>Pełen wachlarz pojazdów zagwarantuje ci transport w wielkim stylu.<br><br><ul class="bb_ul"><li>Na lądzie poruszaj się <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fm.in" target="_blank" rel=" noopener"  >m.in</a>. czołgami, quadami i skuterami śnieżnymi.<br></li><li>W powietrzu fruwaj helikopterami, hydroplanami oraz myśliwcami bojowymi.<br></li><li>Po wodzie pływaj skuterami wodnymi oraz poduszkowcami.<br></li><li>Wymieniaj opony, akumulatory i paliwo.</li></ul><br><strong>EKSPLORUJ ROZLEGŁE ŚWIATY</strong><br>5 oficjalnych map oraz 1 stworzona przez społeczność to mnogość lokacji do zwiedzenia:<br><br><ul class="bb_ul"><li>Wyspa Księcia Edwarda<br></li><li>Jukon<br></li><li>Waszyngton<br></li><li>Rosja<br></li><li>Hawaje<br></li><li>Niemcy</li></ul><br><strong>MODYFIKUJ WSZYSTKO</strong><br>Od samego początku Unturned był projektowany z myślą o modach.<br><br><ul class="bb_ul"><li>Pobieraj zawartość tworzoną przez graczy, taką jak bronie, pojazdy lub nawet całe poziomy.<br></li><li>Twórz własne mapy, używając wbudowanego edytora. Wszystkie oficjalne mapy zostały stworzone przy użyciu publicznie dostępnych narzędzi i zasobów.<br></li><li>Twórz wtyczki, używając systemów wbudowanych w grę lub zewnętrznych.<br></li><li>Namów innych do głosowania na twoje ubrania oraz skórki w Warsztacie Steam, by stały się one w przyszłości częścią gry.<br></li><li>Połącz siły z innymi twórcami modów i razem stwórzcie aktualizację, która może stać się częścią gry.</li></ul><br><strong>BAJERY</strong><br>Sądzę, że te funkcje są całkiem spoko, ale nie pasują do żadnej innej kategorii. Chciałbym wspomnieć tu o wielu innych rzeczach, ale chcę tu zachować ścisłość:<br><br><ul class="bb_ul"><li>Większość obiektów można zniszczyć celem utorowania sobie drogi.<br></li><li>Aby lepiej wczuć się w świat, możesz używać radia w grze zamiast zewnętrznego programu głosowego, by komunikować się z drużyną. Do wyboru dwie częstotliwości.</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

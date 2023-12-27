@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Legend of Keepers: Career of a Dungeon Manager</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('2769440b-d522-4f22-ad1b-264e4532cd4b/6682b132-3031-4231-ba42-a7933e391c00.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="2769440b-d522-4f22-ad1b-264e4532cd4b/66e05004-7787-483b-ae04-b1e47c0b02fa.png"/> Legend of Keepers: Career of a Dungeon Manager</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="2769440b-d522-4f22-ad1b-264e4532cd4b/f9a7537a-570b-4f9c-ba55-977d9e75d3bb.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-14.12.2023">14.12.2023</a> 16:51:47</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-26.12.2023">26.12.2023</a> 22:47:04</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-Macintosh">Macintosh</a><br/><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Linux)">PC (Linux)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-18.03.2020">18.03.2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-64">64</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-65">65</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategiczna">Strategiczna</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Goblinz Studio">Goblinz Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Goblinz Publishing">Goblinz Publishing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Achievements">Achievements</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Full Controller Support">Full Controller Support</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Leaderboards">Leaderboards</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Stats">Stats</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Workshop">Workshop</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/978520" target="_blank">Steam</a><br/><a href="https://www.facebook.com/LegendOfKeepers" target="_blank">Facebook</a><br/><a href="https://twitter.com/LegendOfKeepers" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/goblinzstudiotv" target="_blank">YouTube</a><br/><a href="https://www.gog.com/game/legend_of_keepers_career_of_a_dungeon_master" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/en-US/p/legend-of-keepers" target="_blank">Epic</a><br/><a href="https://goblinzstudio.itch.io/legend-of-keepers" target="_blank">Itch</a><br/><a href="https://goblinzstudio.com/game/legend-of-keepers" target="_blank">Official</a><br/><a href="https://discord.gg/JB73Asxwfp" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/goblinzstudio/" target="_blank">Reddit</a><br/><a href="https://www.twitch.tv/directory/game/Legend%20of%20Keepers" target="_blank">Twitch</a><br/><a href="http://itunes.apple.com/us/app/id6444660338#?platform=iphone" target="_blank">iPhone</a><br/><a href="http://itunes.apple.com/us/app/id6444660338#?platform=ipad" target="_blank">iPad</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[HLTB] 20 to 30 hours">[HLTB] 20 to 30 hours</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dungeon Crawler">Dungeon Crawler</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Lovecraft">Lovecraft</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Mroczna">Mroczna</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Pikselowa">Pikselowa</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Planszówka">Planszówka</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Roguelike">Roguelike</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Roguelite">Roguelite</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Trudna">Trudna</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turowa">Turowa</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Zarządzanie">Zarządzanie</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>Newsletter</h1><p><a href="https://e3ccac1c.sibforms.com/serve/MUIEAOnrFlT75eLsKS_qAVcZrJgGsI7f9FXCJWX_6KqR8Dt6MjD6nU6tRwq0nwH19Mj1q2S4NKObbux3VefL723VftSlg_-B5VJ_8reJ8bBzUsNb7Ap8UW7Tq5voE2g68YKzPB9aQvK51nSw-ZHyhFK5iFPmevWbOExKh7auP-il1rF5BYCaXlrVmac0vuscpuRFZC_nUjyItMX7"><img src="https://items.gog.com/legend_of_keepers_career_of_a_dungeon_master/Newsletter_exclusivemonster.gif"></a></p>
+<br>
+<img src="https://items.gog.com/legend_of_keepers_career_of_a_dungeon_master/Gif_logo_LOK.gif">
+<br>
+
+<br>
+W tej grze nawiązującej do gatunku rogue-lite gracz rozpoczyna karierę Władcy Podziemi i musi ich bronić!<h4>Cechy gry</h4>
+<ul class="bb_ul"><li> Dołącz do firmy Podziemia i wspinaj się po szczeblach kariery w korporacji.
+<br>
+</li><li> Morduj tak zwanych „bohaterów”, aby chronić skarby korporacji.
+<br>
+</li><li> Zatrudniaj potwory, zarządzaj pracownikami i zapasem pułapek.
+<br>
+</li><li> Radź sobie ze strajkami pracowników i innymi zdarzeniami.</li></ul><h4>Gra obronna rogue-lite</h4>
+Każda gra jest inna, ale gracze zachowują niektóre premie Władców pomiędzy kolejnymi próbami. Jak już wspomnieliśmy, nasza gra to mieszanka gatunku rogue-lite i gry polegającej na obronie podziemi. Jak to uzyskaliśmy? Drogą wielu prób osiągnięcia równowagi między fazami zarządzania i walki w podziemiach!
+<br>
+
+<br>
+<video muted="" preload="auto" loop="" autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/legend_of_keepers_career_of_a_dungeon_master/mp4/Gif_steam_placementmob_2.gif.mp4" type="video/mp4"></video><h4>Faza podziemi</h4>
+Najpierw musicie zaplanować obronę przed drużyną poszukiwaczy przygód. Sprawdźcie ich statystyki, a potem przygotujcie pułapki i potwory, którymi ich pokonacie! Gdy wasze podziemia będą gotowe, przyjmijcie jakże niemile widzianych bohaterów! 
+<br>
+
+<br>
+W naszej grze możecie obserwować, jak bohaterowie giną! To dokładne przeciwieństwo gatunku „dungeon crawler” – bohaterowie będą odkrywać wasze podziemia i wpadać w zastawione przez was pułapki. Gdy poszukiwacze przygód trafią na ustawioną przez was grupę potworów, rozpocznie się walka turowa!
+<br>
+
+<br>
+<video muted="" preload="auto" loop="" autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/legend_of_keepers_career_of_a_dungeon_master/mp4/Gif_steam_Fight_4.gif.mp4" type="video/mp4"></video><h4> Gry i seriale, które nas zainspirowały: </h4>
+HeroQuest (gra planszowa), Naheulbeuk (francuskie słuchowisko),  Kaamelott (najlepszy z francuskich seriali), Monty Python (angielski serial).
+<br>
+
+<br>
+Gry wideo: Darkest Dungeon, Slay the Spire, Dungeon Keeper, Final Fantasy, Divinity, For the King, Chroma Squad, Battle Brothers, West of Loathing i wiele, wiele innych...
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

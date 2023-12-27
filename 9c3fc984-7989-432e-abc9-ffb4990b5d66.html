@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Minecraft Fabulously Optimized 5.6.2</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('9c3fc984-7989-432e-abc9-ffb4990b5d66/cd465123-5057-467d-9329-cbaa7aaea4dd.png');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src=""/> Minecraft Fabulously Optimized 5.6.2</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="9c3fc984-7989-432e-abc9-ffb4990b5d66/e9c19e7a-ea1c-4e3d-9d46-22dc31826a38.png"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>2d 12h 9m 50s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-21.12.2023">21.12.2023</a> 22:50:07</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-25.12.2023">25.12.2023</a> 23:05:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-26.12.2023">26.12.2023</a> 22:49:26</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-MultiMC">MultiMC</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-18.11.2011">18.11.2011</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://minecraft.net/" target="_blank">Minecraft.net</a><br/><a href="https://www.curseforge.com/minecraft/mc-mods" target="_blank">Mods on Curseforge</a><br/><a href="https://modrinth.com/mods" target="_blank">Mods on Modrinth</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<b>Minecraft 1.20.2</b><br><br>LWJGL 3.3.2<br>Fabric Loader 0.15.3<br>Fabric Intermediary Mappings 1.20.2<br><br>✅ 3d Skin Layers 1.5.6-mc1.20.2<br>✅ Animatica 0.6+1.20<br>✅ BetterF3 8.0.2<br>✅ Better Mount HUD 1.2.2<br>✅ Better Third Person 1.9.0<br>✅ Borderless Mining 1.1.9+1.20.2<br>✅ Camera Utils 1.20.2-1.0.7<br>✅ Capes 1.5.3+1.20.2<br>✅ Chat Heads 0.10.27<br>✅ CIT Resewn 1.1.3+1.20<br>✅ Cloth Config v12 12.0.113<br>✅ Continuity 3.0.0-beta.4+1.20.2<br>✅ Controlify 1.7.0+1.20.2<br>✅ Controlling For Fabric 13.0.1<br>✅ Custom Command Item Giver 1.0.3<br>✅ Debugify 1.20.2+1.0<br>✅ Distant Horizons 2.0.1-a<br>✅ Dynamic FPS 3.3.1<br>✅ e4mc 4.0.1<br>✅ Eating Animation 1.20+1.9.5<br>✅ Enhanced Block Entities 0.9.1+1.20.2<br>✅ EntityCulling 1.6.3<br>✅ Entity Model Features 1.2<br>✅ Entity Texture Features 5.0<br>✅ Fabric API 0.91.2+1.20.2<br>✅ Fabric Language Kotlin 1.10.16+kotlin.1.9.21<br>✅ FabricSkyBoxes 0.7.3+mc1.20.2<br>✅ Fabrishot 1.11.0<br>✅ FastQuit 3.0.0+1.20+<br>✅ FerriteCore 6.0.1<br>✅ FirstpersonModel 2.2.4<br>✅ FabricSkyBoxes Interop 1.3.6+mc1.20.2-build.52<br>✅ Hold That Chunk 2.1.0<br>✅ ImmediatelyFast 1.2.8+1.20.4<br>✅ Indium 1.0.28+mc1.20.4<br>✅ Iris 1.6.14<br>✅ LambDynamicLights 2.3.3+1.20.2<br>✅ Language Reload 1.5.10+1.20.2<br>✅ LiLaC 1.0.0-beta.3<br>✅ Litematica 0.16.0<br>✅ Lithium 0.12.0<br>✅ Main Menu Credits 1.1.2<br>✅ MaLiLib 0.17.0<br>✅ MixinTrace 1.1.1+1.17<br>✅ Model Gap Fix 1.14<br>✅ ModernFix 5.10.1+mc1.20.2<br>✅ Mod Menu 8.0.1<br>✅ MoreChatHistory 1.1.1<br>✅ More Culling 1.20.1-0.19.0<br>✅ NBT Autocomplete 1.1.8<br>✅ NBT Editor 1.12.1.1<br>❎ NBT Tooltip 1.7.2<br>✅ No Chat Reports 1.20.2-v2.3.1<br>✅ NotEnoughAnimations 1.6.4<br>✅ OptiGUI 2.1.7<br>✅ oωo 0.11.4+1.20.2<br>✅ Paginated Advancements 2.4.2<br>✅ Pick Block Pro 1.7.21<br>✅ Presence Footsteps 1.10.1<br>✅ Puzzle 1.6.0+1.20.2<br>✅ Reese's Sodium Options 1.7.0+mc1.20.2-build.97<br>✅ Remove Reloading Screen 3.2.3+mc1.20.2-fabric<br>✅ Searchables 1.0.11<br>✅ Sodium Extra 0.5.3+mc1.20.2-build.114<br>✅ Sodium 0.5.5<br>❎ Song Player 3.1.1<br>✅ Song Player 3.1.3<br>✅ Symbol Chat 1.20.2-1.1.4<br>✅ ViaFabricPlus 2.10.1<br>✅ Visible Barriers 2.0.10<br>✅ Visuality 0.7.1+1.20<br>✅ YetAnotherConfigLib 3.3.0-beta.1+1.20.2<br>✅ YOSBR 0.1.2<br>✅ Zoomify 2.12.0<br>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
