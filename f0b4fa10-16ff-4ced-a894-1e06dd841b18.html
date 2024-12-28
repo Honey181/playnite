@@ -25,14 +25,17 @@ html {
   margin: 0;                                          /* no margins */
   background-color: black;                            /* black background */
   vertical-align: middle;                             /* align vertical middle */
-  height: 48px;
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
 }
 
 .title {
 	width: 100%;                                      /* title container width 100% */
 	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
     grid-row: 1;                                      /* row 1 */
-	height: 48px;
+
 }
 .cards {                                              /* empty not used here */
 }
@@ -83,6 +86,10 @@ html {
 .detailstable {
   width: 100%;                                         /* set to full width of details */
   padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
 }
 
 .descriptiontitle {
@@ -168,11 +175,11 @@ a:active {
 
 		</style>
 	</head>
-	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('f0b4fa10-16ff-4ced-a894-1e06dd841b18/609a3907-1501-4ecb-9bd3-5f6f39d1e42b.jpg');">
 		<div class="cards">
 			<div class="card">
 				<div class="title">
-					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Outer Worlds: Spacer&#39;s Choice Edition</h2>
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="f0b4fa10-16ff-4ced-a894-1e06dd841b18/85b3fed2-55c9-4e57-b081-645ed0cb55d8.ico"/> The Outer Worlds: Spacer&#39;s Choice Edition</h2>
 				</div>
 				<div class="detailstitle">
 				<H3>Details</H3>
@@ -181,7 +188,11 @@ a:active {
 					<div style="overflow: auto;">
 						<TABLE class="detailstable">
 							<col style="width:50%" />
-							<col style="width:50%" />							<TR>
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="f0b4fa10-16ff-4ced-a894-1e06dd841b18/b69e266d-c52b-4437-a2e8-9e8d4c03a877.jpg"/></TD>
+							</TR>
+							<TR>
 								<TD>Playtime</TD>
 								<TD>Not Played</TD>
 							</TR>
@@ -264,5 +275,10 @@ a:active {
 				</div>
 			</div>
 		</div>
-	</body>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
 </html>
